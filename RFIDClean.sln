@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Clients", "01. Clients", "{B8F35D93-8984-4F97-9E21-1ADCBC25DBEF}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. ApiGateways", "02. ApiGateways", "{3C60114B-A668-4A35-AFAB-98C4ACE141DC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Services", "03. Services", "{ACE83F89-6F6E-46E7-9337-D00BD3CDE174}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Services", "01. Services", "{ACE83F89-6F6E-46E7-9337-D00BD3CDE174}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. ControlPortales", "01. ControlPortales", "{0CFB353F-288E-42CF-8889-4DB1CAA32CE7}"
 EndProject
