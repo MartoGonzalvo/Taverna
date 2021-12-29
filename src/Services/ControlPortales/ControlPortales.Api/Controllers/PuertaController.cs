@@ -18,12 +18,12 @@ namespace ControlPortales.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet("{Id}")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(PuertaGetByIdQueryResult))]
-        public async Task<IActionResult> GetById([FromQuery] PuertaGetByIdQuery query, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetById(string Id, CancellationToken cancellationToken)
         {
-           var response = await _mediator.Send(query, cancellationToken);
+           var response = await _mediator.Send(new PuertaGetByIdQuery(Id), cancellationToken);
 
             if (response == null)
                 return NotFound();
@@ -40,12 +40,12 @@ namespace ControlPortales.Api.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("Activo/{activo?}")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<PuertaGetListByActivoQueryResult>))]
-        public async Task<IActionResult> GetListByActivo([FromQuery] PuertaGetListByActivoQuery query, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetListByActivo( CancellationToken cancellationToken, bool? activo = null)
         {
-            var response = await _mediator.Send(query, cancellationToken);
+            var response = await _mediator.Send(new PuertaGetListByActivoQuery { Activo=activo}, cancellationToken);
 
             if (!response.Any())
                 return NotFound();

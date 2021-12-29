@@ -22,8 +22,12 @@ namespace ControlPortales.Application.Queries.PuertaQueries
         public async Task<IEnumerable<PuertaGetListByActivoQueryResult>> Handle(PuertaGetListByActivoQuery request, CancellationToken cancellationToken)
         {
             {
-                var result = await _cosmosDbContext.Puertas.Where(x => x.Activo == true).ToListAsync();
+                var result =  _cosmosDbContext.Puertas.Select(x=>x);
 
+                if (request.Activo != null)
+                {
+                    result = result.Where(x => x.Activo == request.Activo);
+                }
                 
                 return result.Select(x=> new PuertaGetListByActivoQueryResult {
                     Id = x.Id,

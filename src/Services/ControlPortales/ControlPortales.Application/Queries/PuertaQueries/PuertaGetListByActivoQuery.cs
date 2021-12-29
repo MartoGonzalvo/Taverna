@@ -10,5 +10,6 @@ namespace ControlPortales.Application.Queries.PuertaQueries
 {
     public class PuertaGetListByActivoQuery : IRequest<IEnumerable<PuertaGetListByActivoQueryResult>>
     {
+        public bool? Activo { get; set; }
     }
 }

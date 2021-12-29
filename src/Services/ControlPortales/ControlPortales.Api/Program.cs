@@ -15,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
+    c.OperationFilter<ReApplyOptionalRouteParameterOperationFilter>();
+    
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ControlPortales.Api", Version = "v1" });
 });
 
