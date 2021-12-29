@@ -23,10 +23,19 @@ builder.Services.AddMediatR(Assembly.Load("ControlPortales.Application"));
 builder.Services.AddMediatR(typeof(Program).GetTypeInfo().Assembly);
 
 //Conexion a cosmosdb.
+#if DEBUG
+builder.Services.AddDbContext<CosmosDbContext>(options => options.UseCosmos(
+                                                    "https://cosmosdb-rfidcleandesa.documents.azure.com:443",
+                                                    "TCJII4KjKaywe9VOj9hJLjOCwA3a7NRseZaPfUfCICJtSuuQ9dKFv1RfRGENdQK5s4eosDwQ4ppzXol88WqdjQ==",
+                                                    databaseName: "ControlPortalesDesa"));
+#elif RELESASE
 builder.Services.AddDbContext<CosmosDbContext>(options => options.UseCosmos(
                                                     "https://cosmosdb-rfidclean.documents.azure.com:443",
                                                     "KgKk9gxoA5LmarUnbGXAMcLYeUJMCJrmUJlvGmfteaK56SaKUQDhN3MZ4PJuTYsVE7MBTv8q6AwpgWyxX0qb4w==",
                                                     databaseName: "ControlPortales"));
+#else
+#endif
+
 
 var app = builder.Build();
 
