@@ -39,5 +39,19 @@ namespace ControlPortales.Api.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PuertaGetListByActivoQueryResult>))]
+        public async Task<IActionResult> GetListByActivo([FromQuery] PuertaGetListByActivoQuery query, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(query, cancellationToken);
+
+            if (!response.Any())
+                return NotFound();
+
+            return Ok(response);
+        }
+
     }
 }
