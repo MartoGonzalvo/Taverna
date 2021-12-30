@@ -10,4 +10,8 @@
 	  <ProjectReference Include="..\ControlPortales.Infraestructure.DataBase\ControlPortales.Infraestructure.DataBase.csproj" />
 	</ItemGroup>
 	
+	<ItemGroup>
+	  <Folder Include="DomainEventHandlers\PuertaUpdateDomainEventHandlers\" />
+	</ItemGroup>
+	
 </Project>

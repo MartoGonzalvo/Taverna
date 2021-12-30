@@ -1,4 +1,5 @@
-﻿using ControlPortales.Application.Commands.PuertaCommands;
+﻿using ControlPortales.Application.Commands.PuertaComands;
+using ControlPortales.Application.Commands.PuertaCommands;
 using ControlPortales.Application.Queries.PuertaQueries;
 using ControlPortales.Application.Queries.PuertaQueries.QueryResults;
 using MediatR;
@@ -51,6 +52,15 @@ namespace ControlPortales.Api.Controllers
                 return NotFound();
 
             return Ok(response);
+        }
+
+        [HttpPost("Update")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> Post(PuertaUpdateCommand command, CancellationToken cancellationToken)
+        {
+            await _mediator.Send(command, cancellationToken);
+
+            return Ok();
         }
 
     }
