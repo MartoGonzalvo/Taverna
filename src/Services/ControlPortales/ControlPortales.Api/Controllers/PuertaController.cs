@@ -63,5 +63,14 @@ namespace ControlPortales.Api.Controllers
             return Ok();
         }
 
+        [HttpPost("UpdateEstado")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> Post(PuertaUpdateEstadoCommand command, CancellationToken cancellationToken)
+        {
+            await _mediator.Send(command, cancellationToken);
+
+            return Ok();
+        }
+
     }
 }

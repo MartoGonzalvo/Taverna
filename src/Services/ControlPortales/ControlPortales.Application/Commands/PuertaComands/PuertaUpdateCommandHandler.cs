@@ -1,6 +1,7 @@
 ﻿using ControlPortales.Domain.Events;
 using ControlPortales.Infraestructure.DataBase;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,13 @@ namespace ControlPortales.Application.Commands.PuertaComands
     {
         private readonly CosmosDbContext _cosmosDbContext;
         private IMediator _mediator;
+        private ILogger<PuertaUpdateCommandHandler> _logger;
 
-        public PuertaUpdateCommandHandler(CosmosDbContext cosmosDbContext, IMediator mediator)
+        public PuertaUpdateCommandHandler(CosmosDbContext cosmosDbContext, IMediator mediator, ILogger<PuertaUpdateCommandHandler> logger)
         {
             _cosmosDbContext = cosmosDbContext;
             _mediator = mediator;
+            _logger = logger;
         }
 
         public async Task<bool> Handle(PuertaUpdateCommand request, CancellationToken cancellationToken)
@@ -41,6 +44,8 @@ namespace ControlPortales.Application.Commands.PuertaComands
 
                 _cosmosDbContext.Update(p);
                 await _cosmosDbContext.SaveChangesAsync(cancellationToken);
+
+                _logger.LogInformation($"Se actualizó el id {p.Id}");
 
                 await _mediator.Publish(new PuertaUpdateDomainEvent { Id = request.Id });
                 
