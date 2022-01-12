@@ -10,36 +10,40 @@ namespace ControlPortales.Application.Commands.PuertaCommands
 {
     public class PuertaCreateCommand : IRequest<bool>
     {
-        public PuertaCreateCommand(string id,string puertaName, short rfidCleanId, string descripcion, bool activo, string antenaIp, short rxSensbility, short sucursalId, decimal power, string antenaPuerto, byte ultimoEstado, DateTime ultimoEstadoFecha, short cantidadMovimientoPuerta)
-        {
-            Id = id;
-            PuertaName = puertaName;
-            RfidCleanId = rfidCleanId;
-            Descripcion = descripcion;
-            Activo = activo;
-            AntenaIp = antenaIp;
-            RxSensbility = rxSensbility;
-            SucursalId = sucursalId;
-            Power = power;
-            AntenaPuerto = antenaPuerto;
-            UltimoEstado = ultimoEstado;
-            UltimoEstadoFecha = ultimoEstadoFecha;
-            CantidadMovimientoPuerta = cantidadMovimientoPuerta;
-        }
+        //public PuertaCreateCommand(string _id,string _puertaName, short _rfidcleanId, string _descripcion, bool _activo, string _antenaIp, short _rxSensitivity, short _sucursalId, decimal _power, string _antenaPuerto, byte _ultimoEstado, DateTime _ultimoEstadoFecha, short _cantidadMovimientosPuerta, short _clienteId, short _empresaId)
+        //{
+        //    id = _id;
+        //    puertaName = _puertaName;
+        //    rfidCleanId = _rfidcleanId;
+        //    descripcion = _descripcion;
+        //    activo = _activo;
+        //    antenaIp = _antenaIp;
+        //    rxSensitivity = _rxSensitivity;
+        //    sucursalId = _sucursalId;
+        //    power = _power;
+        //    antenaPuerto = _antenaPuerto;
+        //    ultimoEstado = _ultimoEstado;
+        //    ultimoEstadoFecha = _ultimoEstadoFecha;
+        //    cantidadMovimientoPuerta = _cantidadMovimientosPuerta;
+        //    clienteId = _clienteId;
+        //    empresaId = _empresaId;
+        //}
 
         [Required]
-        public string Id { get; set; }
-        public string PuertaName { get; set; }
-        public short RfidCleanId { get; set; }
-        public string Descripcion { get; set; }
-        public bool Activo { get; set; }
-        public string AntenaIp { get; set; }
-        public short RxSensbility { get; set; }
-        public short SucursalId { get; set; }
-        public Decimal Power { get; set; }
-        public string AntenaPuerto { get; set; }
-        public byte UltimoEstado { get; set; }
-        public DateTime UltimoEstadoFecha { get; set; }
-        public short CantidadMovimientoPuerta { get; set; }
+        public string id { get; set; }
+        public string puertaName { get; set; }
+        public short rfidCleanId { get; set; }
+        public string descripcion { get; set; }
+        public bool activo { get; set; }
+        public string antenaIp { get; set; }
+        public short rxSensitivity { get; set; }
+        public short sucursalId { get; set; }
+        public Decimal power { get; set; }
+        public string antenaPuerto { get; set; }
+        public byte ultimoEstado { get; set; }
+        public DateTime ultimoEstadoFecha { get; set; }
+        public short cantidadMovimientoPuerta { get; set; }
+        public short? clienteId { get; set; }
+        public short? empresaId { get; set; }
     }
 }

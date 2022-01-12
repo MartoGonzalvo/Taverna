@@ -21,23 +21,26 @@ namespace ControlPortales.Application.Commands.PuertaCommands
         {
             _cosmosDbContext.Puertas.Add(new Puerta
             {
-                Id = request.Id,
-                PuertaName = request.PuertaName,
-                Activo = request.Activo,
-                AntenaIp = request.AntenaIp,
-                AntenaPuerto = request.AntenaPuerto,
-                CantidadMovimientoPuerta = request.CantidadMovimientoPuerta,
-                Descripcion = request.Descripcion,
-                UltimoEstado = request.UltimoEstado,
-                UltimoEstadoFecha = request.UltimoEstadoFecha,
-                Power = request.Power,
-                RfidCleanId = request.RfidCleanId,
-                RxSensbility = request.RxSensbility
+                Id = request.id,
+                PuertaName = request.puertaName,
+                Activo = request.activo,
+                AntenaIp = request.antenaIp,
+                AntenaPuerto = request.antenaPuerto,
+                CantidadMovimientoPuerta = request.cantidadMovimientoPuerta,
+                Descripcion = request.descripcion,
+                UltimoEstado = request.ultimoEstado,
+                UltimoEstadoFecha = request.ultimoEstadoFecha,
+                Power = request.power,
+                RfidCleanId = request.rfidCleanId,
+                RxSensitivity = request.rxSensitivity,
+                SucursalId=request.sucursalId,
+                ClienteId=request.clienteId,
+                EmpresaId=request.empresaId
             });
 
             await _cosmosDbContext.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new PuertaCreatedDomainEvent { Id = request.Id });
+            await _mediator.Publish(new PuertaCreatedDomainEvent { Id = request.id });
 
             return true;
         }

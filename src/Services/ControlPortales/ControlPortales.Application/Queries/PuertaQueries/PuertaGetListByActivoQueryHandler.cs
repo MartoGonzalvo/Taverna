@@ -41,7 +41,10 @@ namespace ControlPortales.Application.Queries.PuertaQueries
                     UltimoEstadoFecha = x.UltimoEstadoFecha,
                     Power = x.Power,
                     RfidCleanId = x.RfidCleanId,
-                    RxSensbility = x.RxSensbility
+                    RxSensitivity = x.RxSensitivity,
+                    SucursalId=x.SucursalId,
+                    ClienteId=x.ClienteId,
+                    EmpresaId=x.EmpresaId
                 }).ToList();
             }
         }

@@ -3,12 +3,15 @@ using ControlPortales.Application.Commands.PuertaCommands;
 using ControlPortales.Application.Queries.PuertaQueries;
 using ControlPortales.Application.Queries.PuertaQueries.QueryResults;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControlPortales.Api.Controllers
 {
     [ApiController]
     [Route("v1/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PuertaController : ControllerBase
     {
         private readonly ILogger<PuertaController> _logger;
@@ -47,6 +50,19 @@ namespace ControlPortales.Api.Controllers
         public async Task<IActionResult> GetListByActivo( CancellationToken cancellationToken, bool? activo = null)
         {
             var response = await _mediator.Send(new PuertaGetListByActivoQuery { Activo=activo}, cancellationToken);
+
+            if (!response.Any())
+                return NotFound();
+
+            return Ok(response);
+        }
+
+        [HttpGet("Cliente/{idCliente}")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PuertaGetListByClienteQueryResult>))]
+        public async Task<IActionResult> GetListByCliente(CancellationToken cancellationToken, int idCliente)
+        {
+            var response = await _mediator.Send(new PuertaGetListByClienteQuery { idCliente = idCliente }, cancellationToken);
 
             if (!response.Any())
                 return NotFound();

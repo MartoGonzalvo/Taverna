@@ -20,8 +20,8 @@ namespace ControlPortales.Domain.AggregatesModel.PuertaAggregate
         public bool? Activo { get; set; }
         [JsonPropertyName("antena_ip")]
         public string AntenaIp { get; set; }
-        [JsonPropertyName("rxsensitivity")]
-        public short? RxSensbility { get; set; }
+        [JsonPropertyName("rxSensitivity")]
+        public short? RxSensitivity { get; set; }
         [JsonPropertyName("sucursal_id")]
         public short? SucursalId { get; set; }
         [JsonPropertyName("power")]
@@ -34,5 +34,9 @@ namespace ControlPortales.Domain.AggregatesModel.PuertaAggregate
         public DateTime UltimoEstadoFecha { get; set; }
         [JsonPropertyName("cantidad_movimientos_puerta")]
         public short? CantidadMovimientoPuerta { get; set; }
+        [JsonPropertyName("cliente_id")]
+        public short? ClienteId { get; set; }
+        [JsonPropertyName("empresa_id")]
+        public short? EmpresaId { get; set; }
     }
 }

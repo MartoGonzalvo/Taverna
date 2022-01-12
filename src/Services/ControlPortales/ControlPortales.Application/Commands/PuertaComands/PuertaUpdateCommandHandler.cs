@@ -40,7 +40,7 @@ namespace ControlPortales.Application.Commands.PuertaComands
                 p.UltimoEstadoFecha = request.UltimoEstadoFecha;
                 p.Power = request.Power;
                 p.RfidCleanId = request.RfidCleanId;
-                p.RxSensbility = request.RxSensbility;
+                p.RxSensitivity = request.RxSensitivity;
 
                 _cosmosDbContext.Update(p);
                 await _cosmosDbContext.SaveChangesAsync(cancellationToken);
