@@ -12,31 +12,31 @@ namespace ControlPortales.Domain.AggregatesModel.PuertaAggregate
         [JsonPropertyName("id")]
         public string Id { get; set; }
         public string PuertaName { get; set; }
-        [JsonPropertyName("rfidclean_id")]
+        [JsonPropertyName("rfidCleanId")]
         public short? RfidCleanId { get; set; }
         [JsonPropertyName("descripcion")]
         public string Descripcion { get; set; }
         [JsonPropertyName("activo")]
         public bool? Activo { get; set; }
-        [JsonPropertyName("antena_ip")]
+        [JsonPropertyName("antenaIp")]
         public string AntenaIp { get; set; }
         [JsonPropertyName("rxSensitivity")]
         public short? RxSensitivity { get; set; }
-        [JsonPropertyName("sucursal_id")]
+        [JsonPropertyName("sucursalId")]
         public short? SucursalId { get; set; }
         [JsonPropertyName("power")]
         public decimal Power { get; set; }
-        [JsonPropertyName("antena_puerto")]
+        [JsonPropertyName("antenaPuerto")]
         public string? AntenaPuerto { get; set; }
-        [JsonPropertyName("ultimo_estado")]
+        [JsonPropertyName("ultimoEstado")]
         public byte? UltimoEstado { get; set; }
-        [JsonPropertyName("ultimo_estado_fecha")]
+        [JsonPropertyName("ultimoEstadoFecha")]
         public DateTime UltimoEstadoFecha { get; set; }
-        [JsonPropertyName("cantidad_movimientos_puerta")]
+        [JsonPropertyName("cantidadMovimientoPuerta")]
         public short? CantidadMovimientoPuerta { get; set; }
-        [JsonPropertyName("cliente_id")]
+        [JsonPropertyName("clienteId")]
         public short? ClienteId { get; set; }
-        [JsonPropertyName("empresa_id")]
+        [JsonPropertyName("empresaId")]
         public short? EmpresaId { get; set; }
     }
 }
