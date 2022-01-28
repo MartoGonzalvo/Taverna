@@ -11,8 +11,7 @@ namespace ControlPortales.Api.Controllers
 {
     [ApiController]
     [Route("v1/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class PuertaController : ControllerBase
+        public class PuertaController : ControllerBase
     {
         private readonly ILogger<PuertaController> _logger;
         private readonly IMediator _mediator;
@@ -81,7 +80,16 @@ namespace ControlPortales.Api.Controllers
 
         [HttpPost("UpdateEstado")]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> Post(PuertaUpdateEstadoCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateEstado(PuertaUpdateEstadoCommand command, CancellationToken cancellationToken)
+        {
+            await _mediator.Send(command, cancellationToken);
+
+            return Ok();
+        }
+
+        [HttpPost("UpdateActivo")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> UpdateActivo(PuertaUpdateActivoCommand command, CancellationToken cancellationToken)
         {
             await _mediator.Send(command, cancellationToken);
 

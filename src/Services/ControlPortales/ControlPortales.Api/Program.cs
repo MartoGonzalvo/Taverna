@@ -40,26 +40,6 @@ builder.Services.AddSwaggerGen(c =>
     
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ControlPortales.Api", Version = "v1" });
 
-    // JWT Auth
-    var securityScheme = new OpenApiSecurityScheme
-    {
-        Name = "JWT Authentication",
-        Description = "Enter JWT Bearer token **_only_**",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = JwtBearerDefaults.AuthenticationScheme.ToLower(),
-        BearerFormat = "JWT",
-        Reference = new OpenApiReference
-        {
-            Id = JwtBearerDefaults.AuthenticationScheme,
-            Type = ReferenceType.SecurityScheme
-        }
-    };
-    c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {securityScheme, Array.Empty<string>()}
-                });
 });
 
 // Commands and query handlers
