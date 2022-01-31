@@ -20,6 +20,7 @@ namespace ControlPortales.Application.Queries.PuertaQueries
 
         public async Task<IEnumerable<PuertaGetListByClienteQueryResult>> Handle(PuertaGetListByClienteQuery request, CancellationToken cancellationToken)
         {
+            throw new Exception("pepe");
             var result = _cosmosDbContext.Puertas.Where(x => x.ClienteId == request.idCliente);
 
             return result.Select(x => new PuertaGetListByClienteQueryResult

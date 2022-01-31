@@ -11,7 +11,9 @@ namespace ControlPortales.Api.Controllers
 {
     [ApiController]
     [Route("v1/[controller]")]
-        public class PuertaController : ControllerBase
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    public class PuertaController : ControllerBase
     {
         private readonly ILogger<PuertaController> _logger;
         private readonly IMediator _mediator;
@@ -22,7 +24,6 @@ namespace ControlPortales.Api.Controllers
         }
 
         [HttpGet("{Id}")]
-        [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(PuertaGetByIdQueryResult))]
         public async Task<IActionResult> GetById(string Id, CancellationToken cancellationToken)
         {
@@ -44,7 +45,6 @@ namespace ControlPortales.Api.Controllers
         }
 
         [HttpGet("Activo/{activo?}")]
-        [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<PuertaGetListByActivoQueryResult>))]
         public async Task<IActionResult> GetListByActivo( CancellationToken cancellationToken, bool? activo = null)
         {
@@ -57,7 +57,6 @@ namespace ControlPortales.Api.Controllers
         }
 
         [HttpGet("Cliente/{idCliente}")]
-        [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(IEnumerable<PuertaGetListByClienteQueryResult>))]
         public async Task<IActionResult> GetListByCliente(CancellationToken cancellationToken, int idCliente)
         {

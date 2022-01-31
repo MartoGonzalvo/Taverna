@@ -1,6 +1,8 @@
 
 using ControlPortales.Api;
+using ControlPortales.Api.Helpers;
 using ControlPortales.Infraestructure.DataBase;
+using Hellang.Middleware.ProblemDetails;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,7 @@ var confbuilder = new ConfigurationBuilder()
 
 IConfiguration configuration = confbuilder.Build();
 
+builder.Services.AddProblemDetails(ProblemDetailsConfiguration.ConfigureProblemDetailsOptions);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
