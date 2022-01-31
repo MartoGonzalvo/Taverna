@@ -1,5 +1,7 @@
 ﻿using ControlPortales.Domain.Events;
+using ControlPortales.Infraestructure.DataBase;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,26 @@ namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDoma
 {
     internal class SendEmailWhenPuertaUpdateEstadoDomainEventHandler : INotificationHandler<PuertaUpdateEstadoDomainEvent>
     {
-        public Task Handle(PuertaUpdateEstadoDomainEvent notification, CancellationToken cancellationToken)
+        private readonly CosmosDbContext _cosmosDbContext;
+
+        public SendEmailWhenPuertaUpdateEstadoDomainEventHandler(CosmosDbContext cosmosDbContext)
         {
-            throw new NotImplementedException();
+            _cosmosDbContext = cosmosDbContext;
+        }
+
+        public async Task Handle(PuertaUpdateEstadoDomainEvent notification, CancellationToken cancellationToken)
+        {
+            var puerta = await _cosmosDbContext.Puertas.SingleAsync(x => x.Id==notification.Id);
+
+            if (puerta.UltimoEstado == 1)
+            {
+                //Hacer algo
+            }
+            else
+            {
+                //hacer otra cosa
+            }
+
         }
     }
 }
