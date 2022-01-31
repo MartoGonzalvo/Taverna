@@ -2,6 +2,7 @@
 using ControlPortales.Api;
 using ControlPortales.Api.Helpers;
 using ControlPortales.Infraestructure.DataBase;
+using ControlPortales.Infraestructure.SendEmails;
 using Hellang.Middleware.ProblemDetails;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -23,6 +24,8 @@ builder.Services.AddProblemDetails(ProblemDetailsConfiguration.ConfigureProblemD
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+//builder.Services.AddScoped<ISendEmails, SendGrindService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
