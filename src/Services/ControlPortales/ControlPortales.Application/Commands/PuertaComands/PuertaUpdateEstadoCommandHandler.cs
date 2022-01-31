@@ -1,4 +1,5 @@
 ﻿using ControlPortales.Domain.Events;
+using ControlPortales.Domain.Exceptions;
 using ControlPortales.Infraestructure.DataBase;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -25,6 +26,8 @@ namespace ControlPortales.Application.Commands.PuertaComands
 
         public async Task<bool> Handle(PuertaUpdateEstadoCommand request, CancellationToken cancellationToken)
         {
+            throw new DomainException("error", "complejo", "2");
+
             var p = _cosmosDbContext.Puertas.FirstOrDefault(x => x.Id == request.Id);
 
             if (p != null)
