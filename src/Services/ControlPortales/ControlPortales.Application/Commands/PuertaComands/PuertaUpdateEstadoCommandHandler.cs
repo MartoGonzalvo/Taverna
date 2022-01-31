@@ -15,9 +15,9 @@ namespace ControlPortales.Application.Commands.PuertaComands
     {
         private readonly CosmosDbContext _cosmosDbContext;
         private IMediator _mediator;
-        private ILogger<PuertaUpdateEstadoCommand> _logger;
+        private ILogger<PuertaUpdateEstadoCommandHandler> _logger;
 
-        public PuertaUpdateEstadoCommandHandler(CosmosDbContext cosmosDbContext, IMediator mediator, ILogger<PuertaUpdateEstadoCommand> logger)
+        public PuertaUpdateEstadoCommandHandler(CosmosDbContext cosmosDbContext, IMediator mediator, ILogger<PuertaUpdateEstadoCommandHandler> logger)
         {
             _cosmosDbContext = cosmosDbContext;
             _mediator = mediator;
@@ -26,7 +26,11 @@ namespace ControlPortales.Application.Commands.PuertaComands
 
         public async Task<bool> Handle(PuertaUpdateEstadoCommand request, CancellationToken cancellationToken)
         {
-            throw new DomainException("error", "complejo", "2");
+            if(true)
+            {
+                _logger.LogError($"Se actualizó el id ");
+                throw new DomainException("error", "complejo", "2");
+            }
 
             var p = _cosmosDbContext.Puertas.FirstOrDefault(x => x.Id == request.Id);
 
