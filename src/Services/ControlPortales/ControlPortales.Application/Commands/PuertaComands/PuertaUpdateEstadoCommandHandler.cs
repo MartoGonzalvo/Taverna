@@ -26,11 +26,11 @@ namespace ControlPortales.Application.Commands.PuertaComands
 
         public async Task<bool> Handle(PuertaUpdateEstadoCommand request, CancellationToken cancellationToken)
         {
-            if(true)
-            {
-                _logger.LogError($"Se actualizó el id ");
-                throw new DomainException("error", "complejo", "2");
-            }
+            //if(true)
+            //{
+            //    _logger.LogError($"Se actualizó el id ");
+            //    throw new DomainException("error", "complejo", "2");
+            //}
 
             var p = _cosmosDbContext.Puertas.FirstOrDefault(x => x.Id == request.Id);
 

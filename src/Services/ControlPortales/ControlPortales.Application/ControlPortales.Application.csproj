@@ -7,7 +7,6 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\ControlPortales.Infraestructure.SendEmails\ControlPortales.Infraestructure.SendEmails.csproj" />
 	  <ProjectReference Include="..\ControlPortales.Infraestructure.DataBase\ControlPortales.Infraestructure.DataBase.csproj" />
 	</ItemGroup>
 	

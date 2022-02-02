@@ -1,6 +1,8 @@
 ﻿using ControlPortales.Domain.Events;
+using ControlPortales.Infraestructure.DataBase;
 using ControlPortales.Infraestructure.SendEmails;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,33 @@ using System.Threading.Tasks;
 
 namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDomainEventHandlers
 {
-    private readonly ISendEmails _sendEmailService;
+   
     public class SendEmailWhenPuertaUpdateEstadoDomainEventHandler : INotificationHandler<PuertaUpdateEstadoDomainEvent>
     {
-        public Task Handle(PuertaUpdateEstadoDomainEvent notification, CancellationToken cancellationToken)
+        private readonly CosmosDbContext _cosmosDbContext;
+        //private readonly ISendEmails _sendEmailService;
+
+        public SendEmailWhenPuertaUpdateEstadoDomainEventHandler(CosmosDbContext cosmosDbContext)
         {
-            throw new NotImplementedException();
+            _cosmosDbContext = cosmosDbContext;
+            //_sendEmailService = sendEmailService;
+        }
+
+        public async Task Handle(PuertaUpdateEstadoDomainEvent notification, CancellationToken cancellationToken)
+        {
+
+            var puerta = await _cosmosDbContext.Puertas.SingleAsync(x => x.Id == notification.Id);
+
+            if (puerta.UltimoEstado == 1)
+            {
+                //Hacer algo
+            }
+            else
+            {
+                //hacer otra cosa
+                string[] dest = { "yo@mail.com" };
+               //await _sendEmailService.Send("Desconectado", "bla bla bla",dest);
+            }
         }
     }
 }
