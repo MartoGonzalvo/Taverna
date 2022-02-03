@@ -33,13 +33,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Domain", "03.Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Infraestructure", "04.Infraestructure", "{35A87441-4B29-494A-B3A9-92D2353AE2EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Api", "src\Services\Notifications\Notifications.Api\Notifications.Api\Notifications.Api.csproj", "{8F529DAD-7616-4D76-9E9C-04CAA4F3575B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Api", "src\Services\Notifications\Notifications.Api\Notifications.Api\Notifications.Api.csproj", "{8F529DAD-7616-4D76-9E9C-04CAA4F3575B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Application", "src\Services\Notifications\Notifications.Application\Notifications.Application\Notifications.Application.csproj", "{C18995AE-B812-4799-A781-308F12DC0610}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Application", "src\Services\Notifications\Notifications.Application\Notifications.Application\Notifications.Application.csproj", "{C18995AE-B812-4799-A781-308F12DC0610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Domain", "src\Services\Notifications\Notifications.Domain\Notifications.Domain\Notifications.Domain.csproj", "{73D29BCE-98A1-4562-9A5D-55E5D12B8BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Domain", "src\Services\Notifications\Notifications.Domain\Notifications.Domain\Notifications.Domain.csproj", "{73D29BCE-98A1-4562-9A5D-55E5D12B8BD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Infraestructure", "src\Services\Notifications\Notifications.Infraestructure\Notifications.Infraestructure\Notifications.Infraestructure.csproj", "{6ABA572A-3B12-496F-827C-22F14141BDEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Infraestructure", "src\Services\Notifications\Notifications.Infraestructure\Notifications.Infraestructure\Notifications.Infraestructure.csproj", "{6ABA572A-3B12-496F-827C-22F14141BDEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlPortales.Infraestructure.Services", "ControlPortales.Infraestructure.Services\ControlPortales.Infraestructure.Services.csproj", "{80FD3B46-2E95-4E54-8259-7810FAE1F02E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{6ABA572A-3B12-496F-827C-22F14141BDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ABA572A-3B12-496F-827C-22F14141BDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ABA572A-3B12-496F-827C-22F14141BDEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FD3B46-2E95-4E54-8259-7810FAE1F02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FD3B46-2E95-4E54-8259-7810FAE1F02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FD3B46-2E95-4E54-8259-7810FAE1F02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FD3B46-2E95-4E54-8259-7810FAE1F02E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{C18995AE-B812-4799-A781-308F12DC0610} = {E68AA57E-56BA-4010-8300-855FDF21E446}
 		{73D29BCE-98A1-4562-9A5D-55E5D12B8BD1} = {360F16A3-5339-44D0-A2DB-D8879B72D1AC}
 		{6ABA572A-3B12-496F-827C-22F14141BDEA} = {35A87441-4B29-494A-B3A9-92D2353AE2EC}
+		{80FD3B46-2E95-4E54-8259-7810FAE1F02E} = {2012519D-5F7D-4CF7-A8D2-61842F7AEE7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C28BF522-1A7E-4BCB-A7FF-07C187221DDE}

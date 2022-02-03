@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.OpenApi.Models;
 using Notifications.Api;
+using Notifications.Infraestructure;
 using Notifications.Infraestructure.SendGrid;
 using System.Reflection;
 
@@ -26,7 +27,7 @@ builder.Services.AddSwaggerGen(c =>
 // Commands and query handlers
 builder.Services.AddMediatR(Assembly.Load("Notifications.Application"));
 builder.Services.AddMediatR(typeof(Program).GetTypeInfo().Assembly);
-builder.Services.AddSingleton<SendMail>();
+builder.Services.AddScoped<IMailService, SendGridService>();
 
 var app = builder.Build();
 

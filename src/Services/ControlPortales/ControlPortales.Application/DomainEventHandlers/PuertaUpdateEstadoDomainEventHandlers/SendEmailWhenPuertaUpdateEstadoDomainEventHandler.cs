@@ -1,6 +1,6 @@
 ﻿using ControlPortales.Domain.Events;
 using ControlPortales.Infraestructure.DataBase;
-using ControlPortales.Infraestructure.SendEmails;
+using ControlPortales.Infraestructure.Services.Services.Notifications;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,12 +15,12 @@ namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDoma
     public class SendEmailWhenPuertaUpdateEstadoDomainEventHandler : INotificationHandler<PuertaUpdateEstadoDomainEvent>
     {
         private readonly CosmosDbContext _cosmosDbContext;
-        //private readonly ISendEmails _sendEmailService;
+        private readonly INotificationsService _notificationService;
 
-        public SendEmailWhenPuertaUpdateEstadoDomainEventHandler(CosmosDbContext cosmosDbContext)
+        public SendEmailWhenPuertaUpdateEstadoDomainEventHandler(CosmosDbContext cosmosDbContext, INotificationsService notificationService)
         {
             _cosmosDbContext = cosmosDbContext;
-            //_sendEmailService = sendEmailService;
+            _notificationService = notificationService;
         }
 
         public async Task Handle(PuertaUpdateEstadoDomainEvent notification, CancellationToken cancellationToken)
@@ -28,16 +28,22 @@ namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDoma
 
             var puerta = await _cosmosDbContext.Puertas.SingleAsync(x => x.Id == notification.Id);
 
-            if (puerta.UltimoEstado == 1)
+            if (puerta.UltimoEstado == 0)
             {
-                //Hacer algo
+                //Emitir alerta
+                await _notificationService.SendMail(new Infraestructure.Services.Services.Notifications.Data.SendMailData
+                {
+                    From = "no_responder@rfidclean.com.ar",
+                    To = "ddeconomia@gmail.com",
+                    Subject = "Portal desconectado",
+                    Mensaje = String.Format("Se ha desconectado el portal {0}", puerta.Descripcion),
+                    CC="",
+                    CCo="",
+                    MensajeHtml=""
+                });
+
             }
-            else
-            {
-                //hacer otra cosa
-                string[] dest = { "yo@mail.com" };
-               //await _sendEmailService.Send("Desconectado", "bla bla bla",dest);
-            }
+
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Notifications.Infraestructure
 {
-    public interface IMail
+    public interface IMailService
     {
         public Task Send(Mail mail);
     }

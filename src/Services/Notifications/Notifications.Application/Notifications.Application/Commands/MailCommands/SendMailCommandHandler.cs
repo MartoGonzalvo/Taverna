@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Notifications.Infraestructure;
 using Notifications.Infraestructure.SendGrid;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Notifications.Application.Commands.MailCommands
 {
     public class SendMailCommandHandler : IRequestHandler<SendMailCommand, bool>
     {
-        private readonly SendMail _sendMail;
+        private readonly IMailService _sendMail;
 
-        public SendMailCommandHandler(SendMail sendMail)
+        public SendMailCommandHandler(IMailService sendMail)
         {
             _sendMail = sendMail;
         }

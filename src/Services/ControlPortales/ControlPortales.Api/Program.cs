@@ -2,7 +2,7 @@
 using ControlPortales.Api;
 using ControlPortales.Api.Helpers;
 using ControlPortales.Infraestructure.DataBase;
-using ControlPortales.Infraestructure.SendEmails;
+using ControlPortales.Infraestructure.Services;
 using Hellang.Middleware.ProblemDetails;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -51,6 +51,7 @@ builder.Services.AddSwaggerGen(c =>
 // Commands and query handlers
 builder.Services.AddMediatR(Assembly.Load("ControlPortales.Application"));
 builder.Services.AddMediatR(typeof(Program).GetTypeInfo().Assembly);
+builder.Services.AddNotificationsService(builder.Configuration);
 
 //Conexion a cosmosdb.
 #if DEBUG
@@ -76,11 +77,10 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment()==false)
 {
-
+    app.UseProblemDetails();
 }
-app.UseProblemDetails();
 
 app.UseHttpsRedirection();
 
