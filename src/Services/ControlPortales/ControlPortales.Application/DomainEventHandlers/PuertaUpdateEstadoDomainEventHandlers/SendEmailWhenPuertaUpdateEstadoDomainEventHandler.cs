@@ -3,6 +3,7 @@ using ControlPortales.Infraestructure.DataBase;
 using ControlPortales.Infraestructure.Services.Services.Notifications;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,14 @@ namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDoma
     {
         private readonly CosmosDbContext _cosmosDbContext;
         private readonly INotificationsService _notificationService;
+        private readonly IConfiguration _configuration;
 
-        public SendEmailWhenPuertaUpdateEstadoDomainEventHandler(CosmosDbContext cosmosDbContext, INotificationsService notificationService)
+
+        public SendEmailWhenPuertaUpdateEstadoDomainEventHandler(CosmosDbContext cosmosDbContext, INotificationsService notificationService,IConfiguration configuration )
         {
             _cosmosDbContext = cosmosDbContext;
             _notificationService = notificationService;
+            _configuration = configuration;
         }
 
         public async Task Handle(PuertaUpdateEstadoDomainEvent notification, CancellationToken cancellationToken)
@@ -33,13 +37,13 @@ namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDoma
                 //Emitir alerta
                 await _notificationService.SendMail(new Infraestructure.Services.Services.Notifications.Data.SendMailData
                 {
-                    From = "no_responder@rfidclean.com.ar",
-                    To = "ddeconomia@gmail.com",
-                    Subject = "Portal desconectado",
-                    Mensaje = String.Format("Se ha desconectado el portal {0}", puerta.Descripcion),
-                    CC="",
-                    CCo="",
-                    MensajeHtml=""
+                    From = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("From").Value,
+                    To = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("To").Value,
+                    Subject = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("Subject").Value,
+                    Mensaje = String.Format("El {1} se ha desconectado el portal {0}", puerta.Descripcion, puerta.UltimoEstadoFecha.ToString()),
+                    CC = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("Cc").Value,
+                    CCo = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("Cco").Value,
+                    MensajeHtml = ""
                 });
 
             }

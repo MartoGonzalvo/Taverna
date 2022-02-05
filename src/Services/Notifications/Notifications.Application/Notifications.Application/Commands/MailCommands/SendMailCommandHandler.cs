@@ -27,8 +27,8 @@ namespace Notifications.Application.Commands.MailCommands
                 Subject = request.Subject,
                 Mensaje = request.Mensaje,
                 MensajeHtml = request.MensajeHtml,
-
-
+                CC = request.CC,
+                CCo = request.CCo
             });
 
             return true;

@@ -22,4 +22,6 @@
     <ProjectReference Include="..\ControlPortales.Infraestructure.DataBase\ControlPortales.Infraestructure.DataBase.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>

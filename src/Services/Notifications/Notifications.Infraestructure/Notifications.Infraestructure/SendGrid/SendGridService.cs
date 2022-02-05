@@ -23,18 +23,28 @@ namespace Notifications.Infraestructure.SendGrid
         {
            //"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";
             var client = new SendGridClient(ApiKey);
-            var from = new EmailAddress(mail.From);
 
-            //Personalizations = new List< Personalization>
-            //{
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress(mail.From),
+                Subject = mail.Subject,
+                PlainTextContent = mail.Mensaje,
+                HtmlContent = mail.MensajeHtml
+            };
 
-            //}
+            foreach (string t in mail.To.Split(";"))
+            {
+                if (t.Contains("@")) { msg.AddTo(new EmailAddress(t)); }
+            }
+            foreach (string c in mail.CC.Split(";"))
+            {
+                if (c.Contains("@")) { msg.AddCc(new EmailAddress(c)); }
+            }
+            foreach (string co in mail.CCo.Split(";"))
+            {
+                if (co.Contains("@")) { msg.AddBcc(new EmailAddress(co)); }
+            }
 
-            var subject = mail.Subject;
-            var to = new EmailAddress(mail.To);
-            var plainTextContent = mail.Mensaje;
-            var htmlContent = mail.MensajeHtml;
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
         }
     }
