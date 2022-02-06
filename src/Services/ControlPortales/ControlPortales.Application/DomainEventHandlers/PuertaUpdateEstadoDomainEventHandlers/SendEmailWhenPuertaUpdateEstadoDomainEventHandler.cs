@@ -40,7 +40,7 @@ namespace ControlPortales.Application.DomainEventHandlers.PuertaUpdateEstadoDoma
                     From = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("From").Value,
                     To = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("To").Value,
                     Subject = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("Subject").Value,
-                    Mensaje = String.Format("El {1} se ha desconectado el portal {0}", puerta.Descripcion, puerta.UltimoEstadoFecha.ToString()),
+                    Mensaje = String.Format("El {1} se ha desconectado el portal {0}", puerta.Descripcion, puerta.UltimoEstadoFecha.ToLocalTime().ToString()),
                     CC = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("Cc").Value,
                     CCo = _configuration.GetSection("Notifications").GetSection("PortalDesconectado").GetSection("Mail").GetSection("Cco").Value,
                     MensajeHtml = ""
