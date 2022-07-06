@@ -35,7 +35,8 @@ namespace ControlPortales.Application.Commands.PuertaCommands
                 RxSensitivity = request.rxSensitivity,
                 SucursalId=request.sucursalId,
                 ClienteId=request.clienteId,
-                EmpresaId=request.empresaId
+                EmpresaId=request.empresaId,
+                EsTolva= request.esTolva
             });
 
             await _cosmosDbContext.SaveChangesAsync(cancellationToken);

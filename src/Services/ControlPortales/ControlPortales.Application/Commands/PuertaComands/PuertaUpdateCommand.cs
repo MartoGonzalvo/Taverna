@@ -4,13 +4,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ControlPortales.Application.Commands.PuertaComands
 {
     public class PuertaUpdateCommand : IRequest<bool>
     {
-        public PuertaUpdateCommand(string id, string puertaName, short rfidCleanId, string descripcion, bool activo, string antenaIp, short rxSensitivity, short sucursalId, decimal power, string antenaPuerto, byte ultimoEstado, DateTime ultimoEstadoFecha, short cantidadMovimientoPuerta, short cliente_id, short empresa_id)
+        [JsonConstructor]
+        public PuertaUpdateCommand()
+        {
+
+        }
+        public PuertaUpdateCommand(string id, string puertaName, short rfidCleanId, string descripcion, bool activo, string antenaIp, short rxSensitivity, short sucursalId, decimal power, string antenaPuerto, byte ultimoEstado, DateTime ultimoEstadoFecha, short cantidadMovimientoPuerta, short clienteId, short empresaId, bool esTolva)
         {
             Id = id;
             PuertaName = puertaName;
@@ -25,8 +31,9 @@ namespace ControlPortales.Application.Commands.PuertaComands
             UltimoEstado = ultimoEstado;
             UltimoEstadoFecha = ultimoEstadoFecha;
             CantidadMovimientoPuerta = cantidadMovimientoPuerta;
-            ClienteId = cliente_id;
-            EmpresaId = empresa_id;
+            ClienteId = clienteId;
+            EmpresaId = empresaId;
+            EsTolva = esTolva;
         }
 
         [Required]
@@ -45,5 +52,6 @@ namespace ControlPortales.Application.Commands.PuertaComands
         public short CantidadMovimientoPuerta { get; set; }
         public short? ClienteId { get; set; }
         public short? EmpresaId { get; set; }
+        public bool EsTolva { get; set; }
     }
 }

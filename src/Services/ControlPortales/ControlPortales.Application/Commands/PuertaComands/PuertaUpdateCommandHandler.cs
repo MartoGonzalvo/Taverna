@@ -26,31 +26,26 @@ namespace ControlPortales.Application.Commands.PuertaComands
         public async Task<bool> Handle(PuertaUpdateCommand request, CancellationToken cancellationToken)
         {
             var p = _cosmosDbContext.Puertas.FirstOrDefault(x => x.Id == request.Id);
+            p.Id = request.Id;
+            p.PuertaName = p.PuertaName;
+            p.Activo = request.Activo;
+            p.AntenaIp = request.AntenaIp;
+            p.AntenaPuerto = request.AntenaPuerto;
+            p.CantidadMovimientoPuerta = request.CantidadMovimientoPuerta;
+            p.Descripcion = request.Descripcion;
+            p.UltimoEstado = request.UltimoEstado;
+            p.UltimoEstadoFecha = request.UltimoEstadoFecha;
+            p.Power = request.Power;
+            p.RfidCleanId = request.RfidCleanId;
+            p.RxSensitivity = request.RxSensitivity;
+            p.EsTolva = request.EsTolva;
 
-            if(p!= null)
-            {
-                p.Id = request.Id;
-                p.PuertaName = p.PuertaName;
-                p.Activo = request.Activo;
-                p.AntenaIp = request.AntenaIp;
-                p.AntenaPuerto = request.AntenaPuerto;
-                p.CantidadMovimientoPuerta = request.CantidadMovimientoPuerta;
-                p.Descripcion = request.Descripcion;
-                p.UltimoEstado = request.UltimoEstado;
-                p.UltimoEstadoFecha = request.UltimoEstadoFecha;
-                p.Power = request.Power;
-                p.RfidCleanId = request.RfidCleanId;
-                p.RxSensitivity = request.RxSensitivity;
+            _cosmosDbContext.Update(p);
+            await _cosmosDbContext.SaveChangesAsync(cancellationToken);
 
-                _cosmosDbContext.Update(p);
-                await _cosmosDbContext.SaveChangesAsync(cancellationToken);
+            _logger.LogInformation($"Se actualizó el id {p.Id}");
 
-                _logger.LogInformation($"Se actualizó el id {p.Id}");
-
-                await _mediator.Publish(new PuertaUpdateDomainEvent { Id = request.Id });
-                
-            }
-
+            await _mediator.Publish(new PuertaUpdateDomainEvent { Id = request.Id });
             return true;
         }
     }

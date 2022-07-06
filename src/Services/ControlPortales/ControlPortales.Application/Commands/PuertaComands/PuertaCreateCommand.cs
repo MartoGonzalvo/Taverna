@@ -45,5 +45,6 @@ namespace ControlPortales.Application.Commands.PuertaCommands
         public short cantidadMovimientoPuerta { get; set; }
         public short? clienteId { get; set; }
         public short? empresaId { get; set; }
+        public Boolean esTolva { get; set; }
     }
 }

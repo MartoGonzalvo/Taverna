@@ -44,7 +44,8 @@ namespace ControlPortales.Application.Queries.PuertaQueries
                     RxSensitivity = x.RxSensitivity,
                     SucursalId=x.SucursalId,
                     ClienteId=x.ClienteId,
-                    EmpresaId=x.EmpresaId
+                    EmpresaId=x.EmpresaId,
+                    EsTolva=x.EsTolva
                 }).ToList();
             }
         }
