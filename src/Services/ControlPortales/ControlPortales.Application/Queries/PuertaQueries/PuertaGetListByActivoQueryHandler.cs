@@ -28,7 +28,7 @@ namespace ControlPortales.Application.Queries.PuertaQueries
                 {
                     result = result.Where(x => x.Activo == request.Activo);
                 }
-                
+
                 return result.Select(x=> new PuertaGetListByActivoQueryResult {
                     Id = x.Id,
                     PuertaName = x.PuertaName,
@@ -45,7 +45,7 @@ namespace ControlPortales.Application.Queries.PuertaQueries
                     SucursalId=x.SucursalId,
                     ClienteId=x.ClienteId,
                     EmpresaId=x.EmpresaId,
-                    EsTolva=x.EsTolva
+                    EsTolva=  x.EsTolva != null? x.EsTolva : false
                 }).ToList();
             }
         }

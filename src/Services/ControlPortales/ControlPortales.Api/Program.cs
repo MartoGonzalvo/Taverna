@@ -60,14 +60,14 @@ builder.Services.AddDbContext<CosmosDbContext>(options => options.UseCosmos(
                                                     "TCJII4KjKaywe9VOj9hJLjOCwA3a7NRseZaPfUfCICJtSuuQ9dKFv1RfRGENdQK5s4eosDwQ4ppzXol88WqdjQ==",
                                                     databaseName: "ControlPortalesDesa"));
 #elif RELEASE
-builder.Services.AddDbContext<CosmosDbContext>(options => options.UseCosmos(
-                                                    "https://cosmosdb-rfidcleandesa.documents.azure.com:443",
-                                                    "TCJII4KjKaywe9VOj9hJLjOCwA3a7NRseZaPfUfCICJtSuuQ9dKFv1RfRGENdQK5s4eosDwQ4ppzXol88WqdjQ==",
-                                                    databaseName: "ControlPortalesDesa"));
 //builder.Services.AddDbContext<CosmosDbContext>(options => options.UseCosmos(
-//                                                    "https://cosmosdb-rfidclean.documents.azure.com:443",
-//                                                    "KgKk9gxoA5LmarUnbGXAMcLYeUJMCJrmUJlvGmfteaK56SaKUQDhN3MZ4PJuTYsVE7MBTv8q6AwpgWyxX0qb4w==",
-//                                                    databaseName: "ControlPortales"));
+//                                                    "https://cosmosdb-rfidcleandesa.documents.azure.com:443",
+//                                                    "TCJII4KjKaywe9VOj9hJLjOCwA3a7NRseZaPfUfCICJtSuuQ9dKFv1RfRGENdQK5s4eosDwQ4ppzXol88WqdjQ==",
+//                                                    databaseName: "ControlPortalesDesa"));
+builder.Services.AddDbContext<CosmosDbContext>(options => options.UseCosmos(
+                                                    "https://cosmosdb-rfidclean.documents.azure.com:443",
+                                                    "KgKk9gxoA5LmarUnbGXAMcLYeUJMCJrmUJlvGmfteaK56SaKUQDhN3MZ4PJuTYsVE7MBTv8q6AwpgWyxX0qb4w==",
+                                                    databaseName: "ControlPortales"));
 #else
 #endif
 

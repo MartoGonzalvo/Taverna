@@ -39,8 +39,8 @@ namespace ControlPortales.Application.Queries.PuertaQueries
                 ClienteId=x.ClienteId,
                 EmpresaId=x.EmpresaId,
                 SucursalId=x.SucursalId,
-                EsTolva= x.EsTolva
-                
+                EsTolva = x.EsTolva != null ? x.EsTolva : false
+
             }).ToList();
 
         }
