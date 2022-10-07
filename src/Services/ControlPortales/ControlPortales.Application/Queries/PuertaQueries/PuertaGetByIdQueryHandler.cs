@@ -39,7 +39,8 @@ namespace ControlPortales.Application.Queries.PuertaQueries
                 SucursalId=result.SucursalId,
                 ClienteId=result.ClienteId,
                 EmpresaId=result.EmpresaId,
-                EsTolva = result.EsTolva != null ? result.EsTolva : false
+                EsTolva = result.EsTolva != null ? result.EsTolva : false,
+                EsSegundaLectura = result.EsSegundaLectura != null ? result.EsSegundaLectura : false
             };
         }
     }

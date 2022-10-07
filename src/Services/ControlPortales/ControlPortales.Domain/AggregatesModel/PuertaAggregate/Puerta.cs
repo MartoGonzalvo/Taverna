@@ -40,5 +40,8 @@ namespace ControlPortales.Domain.AggregatesModel.PuertaAggregate
         public short? EmpresaId { get; set; }
         [JsonPropertyName("esTolva")]
         public bool? EsTolva { get; set; }
+        [JsonPropertyName("esSegundaLectura")]
+        public bool? EsSegundaLectura { get; set; }
+
     }
 }

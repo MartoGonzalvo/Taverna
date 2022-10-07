@@ -36,7 +36,8 @@ namespace ControlPortales.Application.Commands.PuertaCommands
                 SucursalId=request.sucursalId,
                 ClienteId=request.clienteId,
                 EmpresaId=request.empresaId,
-                EsTolva= request.esTolva
+                EsTolva= request.esTolva,
+                EsSegundaLectura= request.esSegundaLectura
             });
 
             await _cosmosDbContext.SaveChangesAsync(cancellationToken);

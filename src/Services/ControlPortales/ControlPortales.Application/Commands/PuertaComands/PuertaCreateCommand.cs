@@ -46,5 +46,6 @@ namespace ControlPortales.Application.Commands.PuertaCommands
         public short? clienteId { get; set; }
         public short? empresaId { get; set; }
         public Boolean esTolva { get; set; }
+        public Boolean esSegundaLectura { get; set; }
     }
 }

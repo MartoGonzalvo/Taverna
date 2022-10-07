@@ -16,7 +16,7 @@ namespace ControlPortales.Application.Commands.PuertaComands
         {
 
         }
-        public PuertaUpdateCommand(string id, string puertaName, short rfidCleanId, string descripcion, bool activo, string antenaIp, short rxSensitivity, short sucursalId, decimal power, string antenaPuerto, byte ultimoEstado, DateTime ultimoEstadoFecha, short cantidadMovimientoPuerta, short clienteId, short empresaId, bool esTolva)
+        public PuertaUpdateCommand(string id, string puertaName, short rfidCleanId, string descripcion, bool activo, string antenaIp, short rxSensitivity, short sucursalId, decimal power, string antenaPuerto, byte ultimoEstado, DateTime ultimoEstadoFecha, short cantidadMovimientoPuerta, short clienteId, short empresaId, bool esTolva, bool esSegundaLectura)
         {
             Id = id;
             PuertaName = puertaName;
@@ -34,6 +34,7 @@ namespace ControlPortales.Application.Commands.PuertaComands
             ClienteId = clienteId;
             EmpresaId = empresaId;
             EsTolva = esTolva;
+            EsSegundaLectura = esSegundaLectura;
         }
 
         [Required]
@@ -53,5 +54,7 @@ namespace ControlPortales.Application.Commands.PuertaComands
         public short? ClienteId { get; set; }
         public short? EmpresaId { get; set; }
         public bool EsTolva { get; set; }
+        public bool EsSegundaLectura { get; set; }
+
     }
 }

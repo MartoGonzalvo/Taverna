@@ -39,6 +39,7 @@ namespace ControlPortales.Application.Commands.PuertaComands
             p.RfidCleanId = request.RfidCleanId;
             p.RxSensitivity = request.RxSensitivity;
             p.EsTolva = request.EsTolva;
+            p.EsSegundaLectura = request.EsSegundaLectura;
 
             _cosmosDbContext.Update(p);
             await _cosmosDbContext.SaveChangesAsync(cancellationToken);
